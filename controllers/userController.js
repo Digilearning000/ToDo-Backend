@@ -66,4 +66,18 @@ const loginUser = async (req, res) => {
   }
 };
 
-export { registerdUser, loginUser };
+const getUserTasks = async (req, res) => {
+  const userId = req.user.id;
+
+  try {
+    const tasks = User.findById(userId).populate("tasks");
+
+    console.log(tasks);
+
+    return res.status(200).json({ tasks });
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
+export { registerdUser, loginUser, getUserTasks };
