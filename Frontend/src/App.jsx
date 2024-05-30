@@ -1,12 +1,20 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
 
-function App() {
-  const [count, setCount] = useState(0);
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Login from "./components/Login";
+import Register from "./components/Register";
+import TaskForm from "./components/TaskForm";
 
-  return <p>Hello Milan</p>;
+function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/" element={<TaskForm />} />
+      </Routes>
+    </Router>
+  );
 }
 
 export default App;
